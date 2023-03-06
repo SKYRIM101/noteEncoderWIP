@@ -25,8 +25,8 @@ for i in range(0, len(y), note_length):
     for letter, piano_note in piano_notes.items():
         piano_y, _ = librosa.load(piano_note)
         corr = np.correlate(note, piano_y)
-        if corr > max_corr:
-            max_corr = corr
+        if corr.max() > max_corr:
+            max_corr = corr.max()
             max_note = letter
     output_text += max_note
 print(output_text)
